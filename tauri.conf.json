@@ -1,0 +1,101 @@
+{
+  "productName": "RequestBooth",
+  "version": "1.0.0",
+  "identifier": "com.requestbooth.app",
+  "build": {
+    "frontendDist": "../dist/public",
+    "devUrl": "http://localhost:5000",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "RequestBooth - DJ Song Request System",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600,
+        "resizable": true,
+        "fullscreen": false,
+        "decorations": true,
+        "alwaysOnTop": false,
+        "skipTaskbar": false,
+        "theme": "auto"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' http://localhost:5000 https://api.requestbooth.com https://updates.requestbooth.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:;"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["msi", "nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "certificateThumbprint": null,
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "",
+      "msi": {
+        "template": null,
+        "fragmentPaths": [],
+        "componentRefs": [],
+        "featureRefs": [],
+        "mergeRefs": [],
+        "skipWebviewInstall": false,
+        "upgradeCode": "E2F5F5C5-8A5A-4B8A-9A5A-5C5E2F5F5C5E",
+        "wixLanguage": "en-US",
+        "languages": ["en-US"],
+        "bannerPath": null,
+        "dialogImagePath": null,
+        "enableElevatedUpdateInstall": true
+      },
+      "nsis": {
+        "template": null,
+        "headerImage": null,
+        "sidebarImage": null,
+        "installerIcon": null,
+        "installMode": "both",
+        "languages": ["English"],
+        "displayLanguageSelector": false,
+        "compression": "lzma",
+        "deleteAppDataOnUninstall": false,
+        "startMenuFolder": "RequestBooth",
+        "shortcutFolders": ["Desktop", "StartMenu"],
+        "allowDowngrades": false,
+        "oneClick": false,
+        "perMachine": false,
+        "license": null,
+        "installerHooks": null,
+        "uninstallerHooks": null
+      }
+    }
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://updates.requestbooth.com/{{target}}/{{arch}}/{{current_version}}"
+      ],
+      "dialog": true,
+      "pubkey": ""
+    },
+    "process": {
+      "all": true,
+      "exit": true,
+      "relaunch": true,
+      "relaunchDangerousAllowSymlinkMacos": false
+    },
+    "notification": {
+      "all": true,
+      "isPermissionGranted": true,
+      "requestPermission": true,
+      "sendNotification": true
+    }
+  }
+}
